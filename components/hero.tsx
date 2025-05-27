@@ -1,28 +1,29 @@
- "use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { PodcastPlayer } from "./podcast-player"
-import Link from "next/link"
-import { useLanguage } from "@/lib/language-context"
-import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button";
+import { PodcastPlayer } from "./podcast-player";
+import Link from "next/link";
+import { useLanguage } from "@/lib/language-context";
+import { useState, useEffect } from "react";
 
 export function Hero() {
-  const { t } = useLanguage()
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isVisible, setIsVisible] = useState(false)
+  const { t } = useLanguage();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
 
   // Store particle positions initialized on client only
   const [particles, setParticles] = useState<
-    {
-      left: string
-      top: string
-      animationDelay: string
-      animationDuration: string
-    }[] | null
-  >(null)
+    | {
+        left: string;
+        top: string;
+        animationDelay: string;
+        animationDuration: string;
+      }[]
+    | null
+  >(null);
 
   useEffect(() => {
-    setIsVisible(true)
+    setIsVisible(true);
 
     // Generate stable random positions for particles after mount
     const generatedParticles = [...Array(20)].map(() => ({
@@ -30,15 +31,15 @@ export function Hero() {
       top: `${Math.random() * 100}%`,
       animationDelay: `${Math.random() * 5}s`,
       animationDuration: `${3 + Math.random() * 4}s`,
-    }))
-    setParticles(generatedParticles)
+    }));
+    setParticles(generatedParticles);
 
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 pb-[100px] pt-5">
@@ -94,7 +95,9 @@ export function Hero() {
           {/* Main Heading */}
           <div
             className={`transform transition-all duration-1000 delay-500 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
           >
             <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-5xl">
@@ -111,7 +114,9 @@ export function Hero() {
           {/* Subtitle */}
           <div
             className={`transform transition-all duration-1000 delay-700 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
           >
             <p className="text-lg md:text-xl lg:text-2xl text-white/80 max-w-3xl leading-relaxed">
@@ -123,7 +128,9 @@ export function Hero() {
           {/* Action Buttons */}
           <div
             className={`transform transition-all duration-1000 delay-900 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
           >
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
@@ -132,15 +139,25 @@ export function Hero() {
                 className="group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold rounded-xl shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 overflow-hidden"
                 asChild
               >
-                <Link href="/apply" className="relative z-10">
-                  <span className="mr-2">{t("hero.joinTeam") || "Join Our Team"}</span>
+                <Link
+                  href="/apply"
+                  className="relative z-10 flex items-center justify-center"
+                >
+                  <span className="mr-2">
+                    {t("hero.joinTeam") || "Join Our Team"}
+                  </span>
                   <svg
                     className="w-5 h-5 inline-block group-hover:translate-x-1 transition-transform duration-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </Link>
@@ -148,11 +165,13 @@ export function Hero() {
 
               <Button
                 size="lg"
-                variant="outline"
-                className="group w-full sm:w-auto px-8 py-4 border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 font-semibold rounded-xl backdrop-blur-sm transform hover:scale-105 transition-all duration-300"
+                className="group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-xl shadow-2xl hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300 overflow-hidden"
                 asChild
               >
-                <Link href="/founder" className="flex items-center">
+                <Link
+                  href="/founder"
+                  className="relative z-10 flex items-center justify-center"
+                >
                   <svg
                     className="w-5 h-5 mr-2 group-hover:animate-spin"
                     fill="none"
@@ -166,7 +185,8 @@ export function Hero() {
                       d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
                     />
                   </svg>
-                  {t("hero.backLaunch") || "Back Our Launch"}
+                  <span>{t("hero.backLaunch") || "Back Our Launch"}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </Link>
               </Button>
             </div>
@@ -175,7 +195,9 @@ export function Hero() {
           {/* Podcast Player */}
           <div
             className={`transform transition-all duration-1000 delay-1300 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
           >
             <div className="mt-12 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
@@ -250,5 +272,5 @@ export function Hero() {
         }
       `}</style>
     </section>
-  )
+  );
 }
