@@ -10,7 +10,7 @@ interface LanguageContextType {
   t: (key: string) => string
 }
 
-const translations = {
+const translations: Record<Language, Record<string, string>> = {
   en: {
     // Header
     "header.logo": "Healthiphi",
@@ -849,7 +849,7 @@ const translations = {
   },
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+const LanguageContext = createContext<LanguageContextType | null>(null)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en")
@@ -863,7 +863,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext)
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useLanguage must be used within a LanguageProvider")
   }
   return context

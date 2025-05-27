@@ -56,10 +56,10 @@ function FlipCard({
       <motion.div
         className="w-full h-full relative"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ 
-          duration: 0.8, 
+        transition={{
+          duration: 0.8,
           ease: [0.25, 0.46, 0.45, 0.94], // Custom smooth easing
-          type: "tween" 
+          type: "tween",
         }}
         style={{ transformStyle: "preserve-3d" }}
       >
@@ -95,9 +95,13 @@ function FlipCard({
             </div>
 
             {/* Smoother Hover Effects */}
-            <motion.div 
+            <motion.div
               className="absolute inset-0 bg-white/0 rounded-lg"
-              animate={{ backgroundColor: isFlipped ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0)" }}
+              animate={{
+                backgroundColor: isFlipped
+                  ? "rgba(255,255,255,0.1)"
+                  : "rgba(255,255,255,0)",
+              }}
               transition={{ duration: 0.3 }}
             />
           </CardContent>
@@ -113,7 +117,7 @@ function FlipCard({
             <div className="absolute inset-0">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20"></div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,_rgba(255,255,255,0.1)_1px,_transparent_0)] bg-[length:40px_40px]"></div>
-              
+
               {/* Reduced floating particles for better performance */}
               {[...Array(8)].map((_, i) => (
                 <motion.div
@@ -132,7 +136,7 @@ function FlipCard({
                     duration: 2 + Math.random() * 1,
                     repeat: Infinity,
                     delay: Math.random() * 2,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 />
               ))}
@@ -142,12 +146,16 @@ function FlipCard({
               <motion.div
                 className="text-4xl md:text-4xl font-black mb-3 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent drop-shadow-2xl"
                 initial={{ scale: 0, rotate: -10 }}
-                animate={isFlipped ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -10 }}
-                transition={{ 
-                  delay: 0.2, 
-                  type: "spring", 
+                animate={
+                  isFlipped
+                    ? { scale: 1, rotate: 0 }
+                    : { scale: 0, rotate: -10 }
+                }
+                transition={{
+                  delay: 0.2,
+                  type: "spring",
                   stiffness: 200,
-                  damping: 15
+                  damping: 15,
                 }}
               >
                 {stats}
@@ -169,15 +177,15 @@ function FlipCard({
                   <motion.div
                     key={index}
                     className={`absolute w-${size} h-${size} border border-white/20 rounded-full`}
-                    animate={{ 
-                      scale: [1, 1.2, 1], 
-                      opacity: [0.2, 0, 0.2] 
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.2, 0, 0.2],
                     }}
-                    transition={{ 
-                      duration: 2.5, 
-                      repeat: Infinity, 
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
                       delay: index * 0.4,
-                      ease: "easeInOut"
+                      ease: "easeInOut",
                     }}
                   />
                 ))}
@@ -285,81 +293,83 @@ export function ProblemSection() {
   ];
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      {/* Optimized Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        
-        <div className="absolute inset-0 opacity-10">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_2px_2px,_rgba(255,255,255,0.2)_1px,_transparent_0)] bg-[length:60px_60px]"></div>
-        </div>
-      </div>
+    <>
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        {/* Optimized Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
 
-      <div className="container px-4 md:px-6 mx-auto relative z-10 py-20">
-        {/* Section Header */}
-        <motion.div
-          ref={titleRef}
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent drop-shadow-2xl">
-            {t("problem.title") || "The Future is Here"}
-          </h2>
-
-          <div className="max-w-4xl mx-auto space-y-4">
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed drop-shadow-lg">
-              {t("problem.subtitle") ||
-                "Transform your business with cutting-edge technology solutions designed for the modern era."}
-            </p>
-            <motion.p
-              className="text-1xl md:text-3xl font-bold bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent drop-shadow-xl"
-              initial={{ opacity: 0 }}
-              animate={titleInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              {t("problem.solution") || "Experience Innovation at Scale"}
-            </motion.p>
+          <div className="absolute inset-0 opacity-10">
+            <div className="h-full w-full bg-[radial-gradient(circle_at_2px_2px,_rgba(255,255,255,0.2)_1px,_transparent_0)] bg-[length:60px_60px]"></div>
           </div>
-        </motion.div>
-
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
-          {cardData.map((card, index) => (
-            <FlipCard
-              key={index}
-              title={card.title}
-              description={card.description}
-              stats={card.stats}
-              icon={card.icon}
-              gradient={card.gradient}
-              delay={index * 0.2}
-            />
-          ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          className="text-center mt-20"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-        >
-          <motion.button
-            className="relative px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300 border border-white/20 backdrop-blur-sm"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        <div className="container px-4 md:px-6 mx-auto relative z-10 py-20">
+          {/* Section Header */}
+          <motion.div
+            ref={titleRef}
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="relative z-10 drop-shadow-lg">
-              {t("Consultant") || "Get Started Today"}
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-          </motion.button>
-        </motion.div>
-      </div>
-    </section>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent drop-shadow-2xl">
+              {t("problem.title") || "The Future is Here"}
+            </h2>
+
+            <div className="max-w-4xl mx-auto space-y-4">
+              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed drop-shadow-lg">
+                {t("problem.subtitle") ||
+                  "Transform your business with cutting-edge technology solutions designed for the modern era."}
+              </p>
+              <motion.p
+                className="text-1xl md:text-3xl font-bold bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent drop-shadow-xl"
+                initial={{ opacity: 0 }}
+                animate={titleInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                {t("problem.solution") || "Experience Innovation at Scale"}
+              </motion.p>
+            </div>
+          </motion.div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto">
+            {cardData.map((card, index) => (
+              <FlipCard
+                key={index}
+                title={card.title}
+                description={card.description}
+                stats={card.stats}
+                icon={card.icon}
+                gradient={card.gradient}
+                delay={index * 0.2}
+              />
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            className="text-center mt-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
+            <motion.button
+              className="relative px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300 border border-white/20 backdrop-blur-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10 drop-shadow-lg">
+                {t("Consultant") || "Get Started Today"}
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }
