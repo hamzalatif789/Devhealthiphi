@@ -19,6 +19,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.title": "Add ten healthy years to Iceland—and to ",
     "hero.subtitle":
       "Whether you heal people or want to be first in line for next-gen care, your pledge moves the needle—on launch day and on national health-span.",
+      "hero.cta": "your life's work.",
     "hero.joinTeam": "I want to join the team",
     "hero.backLaunch": "I want to back the launch",
     "hero.podcastTitle": "Just want the story? Hit play below.",
@@ -435,6 +436,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.title": "Bættu tíu heilbrigðum árum við Ísland—og við lífsverkið þitt.",
     "hero.subtitle":
       "Hvort sem þú læknar fólk eða vilt vera fyrstur í röðinni fyrir næstu kynslóðar umönnun, þá færir loforðið þitt nálina—á opnunardegi og á þjóðarheilsu.",
+    "hero.cta": "verk þitt.",
     "hero.joinTeam": "Ég vil ganga í liðið",
     "hero.backLaunch": "Ég vil styðja opnunina",
     "hero.podcastTitle": "Viltu bara söguna? Sláðu á play hér að neðan.",

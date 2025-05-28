@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/language-context"
 export function ProgressBand() {
   const { t } = useLanguage()
   const [progress, setProgress] = useState(0)
-  const [displayProgress, setDisplayProgress] = useState(43)
+  const [displayProgress, setDisplayProgress] = useState(90)
   const [label, setLabel] = useState("Ignition Ready")
 
   useEffect(() => {

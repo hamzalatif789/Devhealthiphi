@@ -39,7 +39,6 @@ export function MiniManifesto() {
         <div className="absolute bottom-40 left-40 w-1.5 h-1.5 bg-blue-400/60 rounded-full animate-ping delay-1000"></div>
         <div className="absolute bottom-60 right-20 w-1 h-1 bg-emerald-400/60 rounded-full animate-ping delay-4000"></div>
       </div>
-
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Main Content Container with Full Padding */}
         <div className="flex-1 w-full px-8 py-20 lg:py-32">

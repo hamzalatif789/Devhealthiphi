@@ -112,7 +112,7 @@ export function Hero() {
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent animate-gradient-x">
-                  {t("your life's work.") || "Digital Future"}
+                  {t("hero.cta") || "Digital Future"}
                 </span>
               </h1>
             </div>
