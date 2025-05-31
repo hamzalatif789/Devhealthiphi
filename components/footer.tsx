@@ -121,6 +121,7 @@ export function Footer() {
                     </span>
                   </Link>
                 </li>
+               
               </ul>
             </div>
 

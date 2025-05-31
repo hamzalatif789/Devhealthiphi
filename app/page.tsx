@@ -22,6 +22,7 @@ export default function Home() {
       <FaqSection />
       <MiniManifesto />
       <Footer />
+
     </main>
   )
 }

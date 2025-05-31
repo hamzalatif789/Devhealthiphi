@@ -1,4 +1,5 @@
-import TalentApplicationForm from "@/components/talent-application-form"
+"use client"
+import {TalentApplicationForm} from "@/components/talent-application-form"
 import Link from "next/link"
 import { ArrowLeft, Clock, FileX } from "lucide-react"
 
