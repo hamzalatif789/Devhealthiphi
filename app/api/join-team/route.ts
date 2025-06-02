@@ -29,8 +29,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Join team API error:', error)
-    
+    console.error('Join team API error:', error)   
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { success: false, error: 'Invalid data', details: error.errors },
