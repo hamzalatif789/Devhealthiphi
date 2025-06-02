@@ -63,20 +63,19 @@ export function MiniManifesto() {
               </p>
             </div>
 
-            {/* Enhanced Pillars Grid */}
+            {/* Enhanced Pillars Grid - No Card Animations */}
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-16 mb-24 lg:mb-32 px-4 lg:px-12">
               {/* Health Pillar */}
               <div className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/25 via-green-500/20 to-teal-500/25 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 group-hover:scale-110"></div>
-                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 hover:bg-white/15 transition-all duration-700 hover:scale-105 hover:rotate-1 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/25 via-green-500/20 to-teal-500/25 rounded-3xl blur-2xl"></div>
+                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 shadow-2xl">
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="relative">
-                      <div className="w-4 h-4 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/50"></div>
-                      <div className="absolute inset-0 w-4 h-4 bg-emerald-400 rounded-full animate-ping opacity-30"></div>
+                      <div className="w-4 h-4 bg-emerald-400 rounded-full shadow-lg shadow-emerald-400/50"></div>
                     </div>
                     <div className="flex-1 h-px bg-gradient-to-r from-emerald-400/70 via-emerald-400/30 to-transparent"></div>
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors duration-500">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                     {t("manifesto.health")}
                   </h3>
                   <div className="space-y-3">
@@ -89,16 +88,15 @@ export function MiniManifesto() {
 
               {/* AI Pillar */}
               <div className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/25 via-cyan-500/20 to-indigo-500/25 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 group-hover:scale-110"></div>
-                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 hover:bg-white/15 transition-all duration-700 hover:scale-105 hover:-rotate-1 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/25 via-cyan-500/20 to-indigo-500/25 rounded-3xl blur-2xl"></div>
+                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 shadow-2xl">
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="relative">
-                      <div className="w-4 h-4 bg-cyan-400 rounded-full animate-pulse delay-300 shadow-lg shadow-cyan-400/50"></div>
-                      <div className="absolute inset-0 w-4 h-4 bg-cyan-400 rounded-full animate-ping opacity-30 delay-300"></div>
+                      <div className="w-4 h-4 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50"></div>
                     </div>
                     <div className="flex-1 h-px bg-gradient-to-r from-cyan-400/70 via-cyan-400/30 to-transparent"></div>
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-500">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                     {t("manifesto.ai")}
                   </h3>
                   <div className="space-y-3">
@@ -111,16 +109,15 @@ export function MiniManifesto() {
 
               {/* Data Pillar */}
               <div className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/25 via-indigo-500/20 to-pink-500/25 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 group-hover:scale-110"></div>
-                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 hover:bg-white/15 transition-all duration-700 hover:scale-105 hover:rotate-1 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/25 via-indigo-500/20 to-pink-500/25 rounded-3xl blur-2xl"></div>
+                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 shadow-2xl">
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="relative">
-                      <div className="w-4 h-4 bg-purple-400 rounded-full animate-pulse delay-500 shadow-lg shadow-purple-400/50"></div>
-                      <div className="absolute inset-0 w-4 h-4 bg-purple-400 rounded-full animate-ping opacity-30 delay-500"></div>
+                      <div className="w-4 h-4 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50"></div>
                     </div>
                     <div className="flex-1 h-px bg-gradient-to-r from-purple-400/70 via-purple-400/30 to-transparent"></div>
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-500">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                     {t("manifesto.data")}
                   </h3>
                   <div className="space-y-3">
@@ -133,16 +130,15 @@ export function MiniManifesto() {
 
               {/* Iceland Pillar */}
               <div className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/25 via-teal-500/20 to-blue-500/25 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 group-hover:scale-110"></div>
-                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 hover:bg-white/15 transition-all duration-700 hover:scale-105 hover:-rotate-1 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/25 via-teal-500/20 to-blue-500/25 rounded-3xl blur-2xl"></div>
+                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-10 shadow-2xl">
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="relative">
-                      <div className="w-4 h-4 bg-teal-400 rounded-full animate-pulse delay-700 shadow-lg shadow-teal-400/50"></div>
-                      <div className="absolute inset-0 w-4 h-4 bg-teal-400 rounded-full animate-ping opacity-30 delay-700"></div>
+                      <div className="w-4 h-4 bg-teal-400 rounded-full shadow-lg shadow-teal-400/50"></div>
                     </div>
                     <div className="flex-1 h-px bg-gradient-to-r from-teal-400/70 via-teal-400/30 to-transparent"></div>
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-teal-300 transition-colors duration-500">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                     {t("manifesto.iceland")}
                   </h3>
                   <div className="space-y-3">

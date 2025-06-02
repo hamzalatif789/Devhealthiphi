@@ -255,7 +255,7 @@ export function FounderPassSection() {
                 {/* Price Display */}
                 <motion.div 
                   className="p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl border border-white/10 backdrop-blur-sm"
-                  animate={{ scale: [1, 1.02, 1] }}
+                  // animate={{ scale: [1, 1.02, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
                   <div className="flex justify-between items-center mb-2">

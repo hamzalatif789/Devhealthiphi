@@ -4,31 +4,12 @@ import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { HelpCircle, Search, MessageCircle, Star } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export function FaqSection() {
+  const { t } = useLanguage()
   const [searchTerm, setSearchTerm] = useState("")
   const [openItems, setOpenItems] = useState(new Set())
-
-  // Mock translation function for demo
-  const t = (key: string) => {
-    const translations = {
-      "faq.title": "Frequently Asked Questions",
-      "faq.subtitle": "Everything you need to know about our platform",
-      "faq.why400.question": "Why does the assessment cost $400?",
-      "faq.why400.answer": "Our comprehensive health assessment includes advanced biomarker analysis, personalized AI-driven insights, and a detailed consultation with healthcare professionals. The cost reflects the extensive laboratory work, expert analysis, and personalized recommendations you receive.",
-      "faq.charged.question": "When will I be charged?",
-      "faq.charged.answer": "You'll be charged only after your sample is successfully processed and your results are ready. We never charge upfront - payment is processed once we deliver your comprehensive health report and insights.",
-      "faq.data.question": "How is my health data protected?",
-      "faq.data.answer": "We use bank-level encryption and comply with HIPAA regulations. Your data is stored securely and never shared with third parties without your explicit consent. We follow strict privacy protocols to ensure your health information remains confidential.",
-      "faq.different.question": "How is this different from other health platforms?",
-      "faq.different.answer": "Our platform combines advanced biomarker testing with AI-powered personalized insights and direct access to healthcare professionals. Unlike generic health apps, we provide actionable, science-backed recommendations tailored specifically to your unique health profile.",
-      "faq.cancel.question": "Can I cancel my subscription anytime?",
-      "faq.cancel.answer": "Yes, you can cancel your subscription at any time without penalties. Your access will continue until the end of your current billing period, and you'll retain access to your historical health data and reports.",
-      "faq.qualifications.question": "What are the qualifications of your healthcare team?",
-      "faq.qualifications.answer": "Our team consists of board-certified physicians, registered dietitians, certified health coaches, and data scientists. All healthcare professionals hold relevant certifications and have extensive experience in personalized medicine and preventive care."
-    }
-    return translations[key] || key
-  }
 
   const faqs = [
     {
@@ -78,7 +59,7 @@ export function FaqSection() {
   const categories = [...new Set(faqs.map(faq => faq.category))]
   const popularFaqs = faqs.filter(faq => faq.popular)
 
-  const toggleItem = (index) => {
+  const toggleItem = (index: number) => {
     const newOpenItems = new Set(openItems)
     if (newOpenItems.has(index)) {
       newOpenItems.delete(index)
@@ -89,7 +70,13 @@ export function FaqSection() {
   }
 
   // Custom Badge component
-  const Badge = ({ children, variant = "default", className = "" }) => {
+  type BadgeProps = {
+    children: React.ReactNode
+    variant?: "default" | "secondary" | "outline"
+    className?: string
+  }
+
+  const Badge = ({ children, variant = "default", className = "" }: BadgeProps) => {
     const baseClasses = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border"
     const variantClasses = {
       default: "bg-blue-400/20 text-blue-300 border-blue-400/30",
@@ -231,28 +218,8 @@ export function FaqSection() {
           </CardContent>
         </Card>
 
-        {/* Contact Support Section */}
-        <div className="mt-16 text-center">
-          <Card className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border-white/10 shadow-2xl">
-            <CardContent className="p-8">
-              <MessageCircle className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Still have questions?
-              </h3>
-              <p className="text-slate-300 mb-6">
-                Our support team is here to help you with any questions or concerns.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium shadow-lg">
-                  Contact Support
-                </button>
-                <button className="px-6 py-3 border border-blue-400 text-blue-300 rounded-lg hover:bg-blue-400/10 transition-colors duration-200 font-medium backdrop-blur-sm">
-                  Live Chat
-                </button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        {/* Contact Support Section - No Buttons */}
+        
       </div>
     </section>
   )

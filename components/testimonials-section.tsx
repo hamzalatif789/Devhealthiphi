@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 interface Testimonial {
   quote: string
@@ -11,24 +12,6 @@ interface Testimonial {
   role: string
   isPatient: boolean
   rating: number
-}
-
-// Mock translation function with all required keys
-const useTranslations = () => {
-  const t = (key: string) => {
-    const translations: Record<string, string> = {
-      "testimonials.title": "What Our Community Says",
-      "testimonials.elin": "The personalized approach completely changed how I manage my health. The insights are incredible and have helped me make better decisions every day.",
-      "testimonials.maria": "As a PHI Coach, I've seen remarkable improvements in patient engagement. This platform bridges the gap between healthcare providers and patients beautifully.",
-      "testimonials.jon": "The user experience is seamless and the data visualization helps me understand my health patterns like never before. Highly recommended!",
-      "testimonials.kristin": "This tool has revolutionized how I connect with my patients. The comprehensive health insights allow for more informed and personalized care.",
-      "testimonials.stats.users": "Happy Users",
-      "testimonials.stats.rating": "Average Rating",
-      "testimonials.stats.partners": "Healthcare Partners"
-    }
-    return translations[key] || key
-  }
-  return t
 }
 
 const testimonialsData: Testimonial[] = [
@@ -63,9 +46,9 @@ const testimonialsData: Testimonial[] = [
 ]
 
 export function TestimonialsSection() {
+  const { t } = useLanguage()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  const t = useTranslations()
 
   const testimonials = useMemo(() => 
     testimonialsData.map(test => ({
@@ -97,7 +80,10 @@ export function TestimonialsSection() {
 
   return (
     <section className="relative w-full py-20 md:py-32 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      {/* Background elements remain unchanged */}
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_65%)]"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
 
       <div className="relative container px-4 md:px-6 mx-auto">
         <div className="text-center mb-16">

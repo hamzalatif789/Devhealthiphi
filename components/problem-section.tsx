@@ -61,8 +61,9 @@ export function ProblemSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">{t("problem.title")}</h2>
+          <h2 className="text-5xl font-bold text-center mb-12 text-white">{t("problem.title")}</h2>
         </motion.div>
+        <div className="flex justify-center mb-12 px-[200px]">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -70,9 +71,10 @@ export function ProblemSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-8"
         >
-          <p className="text-xl text-slate-200">{t("problem.subtitle")}</p>
+          <p className="text-2xl text-slate-200">{t("problem.subtitle")}</p>
           <p className="text-2xl font-bold mt-4 text-white">{t("problem.solution")}</p>
         </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
