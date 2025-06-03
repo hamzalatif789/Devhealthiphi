@@ -166,8 +166,8 @@ export function TalentApplicationForm() {
     setFieldErrors({})
 
     try {
-      // Get the API base URL from environment variables
-      const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000'
+      // // Get the API base URL from environment variables
+      // const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000'
 
       // Prepare data according to your backend schema
       const submitData = {
