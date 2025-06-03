@@ -16,7 +16,6 @@ import { ArrowLeft, Star, Shield, Users, Crown } from "lucide-react"
 import { CardElementstrip } from "./cardelementstripe"
 import { useRouter } from "next/navigation"
 import { supabase } from "@/lib/supabase"
-
 // Initialize Stripe with the correct environment variable name
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
@@ -157,48 +156,26 @@ function FounderSignupFormInner() {
         }
       )
 
-      // Check for Stripe errors first
+      console.log("Stripe response:", { setupIntent })
+      const {data : pledge_data, error : pledge_error} = await supabase.from('pledges')
+        .update({
+          stripe_setup_intent_id: setupIntent.id,
+          stripe_payment_method_id: setupIntent.payment_method,
+          payment_method_configuration_id:setupIntent.payment_method_configuration_details.id,
+          is_charged: false,
+          payment_method_types: setupIntent.payment_method_types,
+        })
+        .eq('id', result.pledge_id)
+
+        console.log("Pledge update response:", { pledge_data, pledge_error })
+      if (pledge_error) {
+        throw new Error(pledge_error.message || 'Failed to update pledge with payment method')
+      }
+       
       if (stripeError) {
         throw new Error(stripeError.message || 'Payment setup failed')
       }
 
-      // Now check if setupIntent exists
-      if (!setupIntent) {
-        throw new Error('Failed to create setup intent')
-      }
-
-      console.log("Stripe response:", { setupIntent })
-
-      // Prepare update data with proper type handling
-      const updateData: any = {
-        stripe_setup_intent_id: setupIntent.id,
-        is_charged: false,
-        payment_method_types: setupIntent.payment_method_types,
-      }
-
-      // Handle payment_method (can be string or object)
-      if (setupIntent.payment_method) {
-        updateData.stripe_payment_method_id = typeof setupIntent.payment_method === 'string' 
-          ? setupIntent.payment_method 
-          : setupIntent.payment_method.id
-      }
-
-      // Safely handle payment_method_configuration_details if it exists
-      if (setupIntent.payment_method_configuration_details) {
-        updateData.payment_method_configuration_id = setupIntent.payment_method_configuration_details.id
-      }
-
-      const { data: pledge_data, error: pledge_error } = await supabase.from('pledges')
-        .update(updateData)
-        .eq('id', result.pledge_id)
-
-      console.log("Pledge update response:", { pledge_data, pledge_error })
-      
-      if (pledge_error) {
-        throw new Error(pledge_error.message || 'Failed to update pledge with payment method')
-      }
-
-      
       // Redirect to success page with pledge details
       router.push(`/founder/success?pledge_id=${result.pledge_id}&customer_id=${result.customer_id || ''}&total_seats=${result.total_seats || 0}`)
 
