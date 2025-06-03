@@ -180,7 +180,7 @@ export function TalentApplicationForm() {
 
       console.log("Submitting data:", submitData)
 
-      const response = await fetch(`${apiBaseUrl}/api/join-team`, {
+      const response = await fetch(`/api/join-team`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
